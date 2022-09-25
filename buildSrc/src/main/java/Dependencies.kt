@@ -3,7 +3,7 @@ object Dependencies {
     private const val nav_version = "2.4.2"
     private const val lifecycle_version = "2.5.1"
     private const val room_version = "2.4.3"
-    private const val hilt_version = "2.41"
+    private const val hilt_version = "2.38.1"
 
     const val CORE_KTX = "androidx.core:core-ktx:1.7.0"
     const val APPCOMPAT = "androidx.appcompat:appcompat:1.5.1"

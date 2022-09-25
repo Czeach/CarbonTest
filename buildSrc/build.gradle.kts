@@ -1,13 +1,11 @@
 import Build_gradle.PluginVersions.kotlin_version
 import Build_gradle.PluginVersions.nav_version
-
-plugins {
-    `kotlin-dsl`
-}
-
 repositories {
     google()
     mavenCentral()
+}
+plugins {
+    `kotlin-dsl`
 }
 
 object PluginVersions {
@@ -18,6 +16,6 @@ object PluginVersions {
 dependencies {
     implementation("com.android.tools.build:gradle:7.1.3")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
-    implementation("com.google.dagger:hilt-android-gradle-plugin:2.41")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
     implementation("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
 }

@@ -1,19 +1,18 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
 }
 
 android {
-    compileSdk BuildAndroidConfig.COMPILE_SDK_VERSION
+    compileSdk = BuildAndroidConfig.COMPILE_SDK_VERSION
 
     defaultConfig {
         applicationId BuildAndroidConfig.APPLICATION_ID
-        minSdk BuildAndroidConfig.MIN_SDK_VERSION
-        targetSdk BuildAndroidConfig.TARGET_SDK_VERSION
+        minSdk = BuildAndroidConfig.MIN_SDK_VERSION
+        targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
         versionCode BuildAndroidConfig.VERSION_CODE
         versionName BuildAndroidConfig.VERSION_NAME
 
@@ -39,7 +38,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(BuildModules.FEATURE_LIST))
     implementation(Dependencies.CORE_KTX)
     implementation(Dependencies.APPCOMPAT)
     implementation(Dependencies.MATERIAL)

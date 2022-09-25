@@ -7,15 +7,22 @@ val properties = org.jetbrains.kotlin.konan.properties.Properties()
 properties.load(project.rootProject.file("local.properties").reader())
 
 android {
+    compileSdk = BuildAndroidConfig.COMPILE_SDK_VERSION
     buildTypes{
         debug {
             buildConfigField("String", "API_KEY", "\"" + properties.getProperty("apiKey") + "\"")
         }
     }
+    defaultConfig {
+        minSdk = BuildAndroidConfig.MIN_SDK_VERSION
+        targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("com.google.android.material:material:1.6.1")
