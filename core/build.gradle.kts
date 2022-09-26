@@ -1,6 +1,10 @@
+import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 val properties = org.jetbrains.kotlin.konan.properties.Properties()
@@ -23,10 +27,26 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("com.google.android.material:material:1.6.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
+    // Coroutines
+    implementation(Dependencies.COROUTINES_CORE)
+    implementation(Dependencies.COROUTINES_ANDROID)
+    implementation(Dependencies.KOTLIN_COROUTINES_ADAPTER)
+
+    //Retrofit 2
+    implementation(Dependencies.RETROFIT2)
+    implementation(Dependencies.RETROFIT_CONVERTER)
+    implementation(Dependencies.OK_HTTP3)
+    implementation(Dependencies.GSON)
+
+    // Dagger-hilt
+    implementation(Dependencies.HILT)
+    kapt(AnnotationProcessors.HILT)
+
+    // Room
+    implementation(Dependencies.ROOM_RUNTIME)
+    implementation(Dependencies.ROOM_KTX)
+    kapt(AnnotationProcessors.ROOM)
+    testImplementation(TestDependencies.ROOM_TESTING)
+
 }
