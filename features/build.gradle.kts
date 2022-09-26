@@ -1,8 +1,9 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -27,13 +28,8 @@ android {
 dependencies {
     api(project(BuildModules.CORE))
 
-    implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.APPCOMPAT)
     implementation(Dependencies.MATERIAL)
     implementation(Dependencies.CONSTRAINT_LAYOUT)
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     testImplementation(TestDependencies.JUNIT)
     androidTestImplementation(AndroidTestDependencies.EXT_JUNIT)
     androidTestImplementation(AndroidTestDependencies.ESPRESSO_CORE)
@@ -65,9 +61,12 @@ dependencies {
 
     // Dagger-hilt
     implementation(Dependencies.HILT)
+    kapt(AnnotationProcessors.HILT)
+
     // Room
     implementation(Dependencies.ROOM_RUNTIME)
     implementation(Dependencies.ROOM_KTX)
+    kapt(AnnotationProcessors.ROOM)
     testImplementation(TestDependencies.ROOM_TESTING)
 
     // Glide for Images
