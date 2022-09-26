@@ -9,5 +9,19 @@
         android:id="@+id/moviesListFragment"
         android:name="com.czech.features.moviesList.MoviesListFragment"
         android:label="Movies"
-        tools:layout="@layout/movies_list_fragment" />
+        tools:layout="@layout/movies_list_fragment" >
+        <action
+            android:id="@+id/action_moviesListFragment_to_movieDetailsFragment2"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.czech.features.movieDetails.MovieDetailsFragment"
+        android:label="movie_details_fragment"
+        tools:layout="@layout/movie_details_fragment" >
+        <argument
+            android:name="movieId"
+            app:argType="integer"
+            app:nullable="false"/>
+    </fragment>
 </navigation>

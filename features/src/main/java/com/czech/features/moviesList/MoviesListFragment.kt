@@ -1,5 +1,6 @@
 package com.czech.features.moviesList
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,10 +13,7 @@ import com.czech.features.R
 import com.czech.features.databinding.MoviesListFragmentBinding
 import com.czech.features.moviesList.adapter.MoviesListAdapter
 import com.czech.features.moviesList.adapter.MoviesListDiffCallback
-import com.czech.features.utils.MoviesListState
-import com.czech.features.utils.hide
-import com.czech.features.utils.show
-import com.czech.features.utils.showShortToast
+import com.czech.features.utils.*
 import kotlinx.coroutines.launch
 
 class MoviesListFragment : Fragment() {
@@ -46,6 +44,7 @@ class MoviesListFragment : Fragment() {
 
         checkInternetConnectivity()
         observe()
+        navigateToDetailsPage()
     }
 
     private fun checkInternetConnectivity() {
@@ -90,6 +89,16 @@ class MoviesListFragment : Fragment() {
                     else -> {}
                 }
             }
+        }
+    }
+
+    private fun navigateToDetailsPage() {
+        moviesListAdapter.onClickItemListener = {
+            launchFragment(
+                MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment2(
+                    it.id!!
+                )
+            )
         }
     }
 
