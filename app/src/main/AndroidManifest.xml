@@ -12,7 +12,8 @@
         android:name=".BaseApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CarbonTest">
+        android:theme="@style/Theme.CarbonTest"
+        android:configChanges="orientation|screenSize|screenLayout|keyboardHidden">
         <activity
             android:name=".MainActivity"
             android:exported="true">

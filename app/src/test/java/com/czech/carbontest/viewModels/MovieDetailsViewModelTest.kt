@@ -1,15 +1,10 @@
 package com.czech.carbontest.viewModels
 
-import com.czech.core.network.NetworkConnection
 import com.czech.core.repositories.movieDetails.MovieDetailsRepository
-import com.czech.core.repositories.moviesList.MoviesListRepository
 import com.czech.core.response.MovieDetails
-import com.czech.core.response.MovieList
 import com.czech.core.utils.DataState
 import com.czech.features.movieDetails.MovieDetailsViewModel
-import com.czech.features.moviesList.MoviesListViewModel
 import com.czech.features.utils.MovieDetailState
-import com.czech.features.utils.MoviesListState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
