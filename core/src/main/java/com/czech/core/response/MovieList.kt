@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieList(
     @SerializedName("results")
-    val results: List<Result?>?,
+    val results: List<Result>,
 ) {
     data class Result(
         @SerializedName("backdrop_path")
