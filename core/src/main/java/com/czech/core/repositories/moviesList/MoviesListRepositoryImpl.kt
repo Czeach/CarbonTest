@@ -62,7 +62,7 @@ class MoviesListRepositoryImpl @Inject constructor(
 
             try {
                 if (result.isNullOrEmpty()) {
-                    emit(DataState.error(message = "You don't have any saved movies. Connect to the internet to get new results"))
+                    emit(DataState.error(message = "You don't have any saved movies. Connect to the internet and refresh to get new results"))
                 } else {
                     emit(DataState.data(data = result))
                 }

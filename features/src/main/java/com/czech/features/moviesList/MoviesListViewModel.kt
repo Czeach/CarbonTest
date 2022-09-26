@@ -21,7 +21,7 @@ class MoviesListViewModel @Inject constructor(
     val isNetworkConnected = networkConnection
     val moviesListState = MutableStateFlow<MoviesListState?>(null)
 
-    fun getMoviesFromNetwork(query: String) {
+    fun getMoviesFromNetwork() {
         viewModelScope.launch {
             moviesListRepository.getMoviesFromNetwork().collect { it ->
                 when {
