@@ -1,10 +1,13 @@
 package com.czech.core.di
 
+import android.content.Context
 import com.czech.core.network.ApiService
+import com.czech.core.network.NetworkConnection
 import com.czech.core.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -51,6 +54,13 @@ object NetworkModule {
         retrofit: Retrofit
     ): ApiService {
         return retrofit.create(ApiService::class.java)
+    }
+
+    @[Provides Singleton]
+    fun provideNetworkConnection(
+        @ApplicationContext context: Context
+    ): NetworkConnection {
+        return NetworkConnection(context)
     }
 
 }
