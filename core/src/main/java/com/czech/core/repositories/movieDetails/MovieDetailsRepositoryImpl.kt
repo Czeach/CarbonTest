@@ -26,7 +26,7 @@ class MovieDetailsRepositoryImpl @Inject constructor(
             try {
                 when (response.isSuccessful) {
                     true -> {
-                        if (response.body() != null) {
+                        if (response.body() == null) {
                             emit(DataState.data(message = "Movie not available at the moment"))
                         } else {
                             emit(DataState.data(data = response.body()))
