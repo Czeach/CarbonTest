@@ -30,6 +30,9 @@ dependencies {
 
     implementation(Dependencies.MATERIAL)
     implementation(Dependencies.CONSTRAINT_LAYOUT)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
     testImplementation(TestDependencies.JUNIT)
     androidTestImplementation(AndroidTestDependencies.EXT_JUNIT)
     androidTestImplementation(AndroidTestDependencies.ESPRESSO_CORE)

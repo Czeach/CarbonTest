@@ -1,25 +1,24 @@
-package com.czech.features
+package com.czech.features.moviesList
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.czech.features.databinding.MoviesListFragmentBinding
 
 class MoviesListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MoviesListFragment()
-    }
-
-    private lateinit var viewModel: MoviesListViewModel
+    private lateinit var binding: MoviesListFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.movies_list_fragment, container, false)
+
+        binding = MoviesListFragmentBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
 }
