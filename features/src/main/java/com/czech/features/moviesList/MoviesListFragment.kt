@@ -22,6 +22,8 @@ class MoviesListFragment : Fragment() {
 
     private val moviesListAdapter by lazy { MoviesListAdapter(MoviesListDiffCallback) }
 
+    private var networkValue = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,18 +43,24 @@ class MoviesListFragment : Fragment() {
         }
 
         checkInternetConnectivity()
+
+        if (networkValue) {
+            viewModel.getMoviesFromNetwork()
+        } else {
+            viewModel.getMoviesFromDB()
+        }
         observe()
         navigateToDetailsPage()
     }
 
     private fun checkInternetConnectivity() {
         viewModel.isNetworkConnected.observe(viewLifecycleOwner) { isConnected ->
-            when (isConnected) {
+            networkValue = when (isConnected) {
                 false -> {
-                    viewModel.getMoviesFromDB()
+                    false
                 }
                 true -> {
-                    viewModel.getMoviesFromNetwork()
+                    true
                 }
             }
         }
@@ -92,11 +100,15 @@ class MoviesListFragment : Fragment() {
 
     private fun navigateToDetailsPage() {
         moviesListAdapter.onClickItemListener = {
-            launchFragment(
-                MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment2(
-                    it.id!!
+            if (networkValue) {
+                launchFragment(
+                    MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment2(
+                        it.id!!
+                    )
                 )
-            )
+            } else {
+                requireActivity().showShortToast("You don't have any saved movies. Connect to the internet and try again")
+            }
         }
     }
 
