@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 import com.czech.core.response.MovieDetails
 import com.czech.core.utils.Constants
 import com.czech.features.databinding.MovieDetailsFragmentBinding
-import com.czech.features.moviesList.MoviesListViewModel
 import com.czech.features.utils.*
 import kotlinx.coroutines.launch
 

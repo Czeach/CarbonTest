@@ -2,7 +2,6 @@ package com.czech.core.network
 
 import com.czech.core.response.MovieDetails
 import com.czech.core.response.MovieList
-import com.czech.core.utils.Constants
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

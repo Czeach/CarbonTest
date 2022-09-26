@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.czech.carbontest.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var navController: NavController
+
+    private lateinit var appBarConfig: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +33,17 @@ class MainActivity : AppCompatActivity() {
 
         navController = navHostFragment.navController
 
-        setupActionBarWithNavController(navController)
+        appBarConfig = AppBarConfiguration(
+            setOf(
+                com.czech.features.R.id.moviesListFragment
+            )
+        )
 
+        setupActionBarWithNavController(navController, appBarConfig)
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(navController, appBarConfig)
     }
 }

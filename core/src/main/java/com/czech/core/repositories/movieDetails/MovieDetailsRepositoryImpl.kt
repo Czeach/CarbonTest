@@ -4,8 +4,6 @@ import com.czech.core.BuildConfig
 import com.czech.core.network.ApiService
 import com.czech.core.response.MovieDetails
 import com.czech.core.utils.DataState
-import com.czech.core.utils.toEntityList
-import com.czech.core.utils.toResultList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

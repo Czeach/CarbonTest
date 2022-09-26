@@ -2,10 +2,8 @@ package com.czech.features.movieDetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.czech.core.database.repositories.MoviesDaoRepository
 import com.czech.core.repositories.movieDetails.MovieDetailsRepository
 import com.czech.features.utils.MovieDetailState
-import com.czech.features.utils.MoviesListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
