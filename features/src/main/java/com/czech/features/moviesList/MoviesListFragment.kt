@@ -102,11 +102,20 @@ class MoviesListFragment : Fragment() {
 
     private fun navigateToDetailsPage() {
         moviesListAdapter.onClickItemListener = {
-            launchFragment(
-                MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment2(
-                    it.id!!
-                )
-            )
+            viewModel.isNetworkConnected.observe(viewLifecycleOwner) { isConnected ->
+                when (isConnected) {
+                    false -> {
+                        requireActivity().showShortToast("You don't have internet connection. Connect to the internet and try again")
+                    }
+                    true -> {
+                        launchFragment(
+                            MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment2(
+                                it.id!!
+                            )
+                        )
+                    }
+                }
+            }
         }
     }
 
