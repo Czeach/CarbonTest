@@ -39,7 +39,7 @@ class MoviesListRepositoryImpl @Inject constructor(
                         }
                     }
                     false -> {
-                        emit(DataState.error(message = "Error ${response.code()}"))
+                        emit(DataState.error(message = "Error ${response.errorBody().toString()}"))
                     }
                 }
             } catch (e: Exception) {

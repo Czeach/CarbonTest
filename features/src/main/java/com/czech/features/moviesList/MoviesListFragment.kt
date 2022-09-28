@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.czech.features.databinding.MoviesListFragmentBinding
 import com.czech.features.moviesList.adapter.MoviesListAdapter
 import com.czech.features.moviesList.adapter.MoviesListDiffCallback
 import com.czech.features.utils.*
 import kotlinx.coroutines.launch
+
 
 class MoviesListFragment : Fragment() {
 
@@ -43,24 +45,27 @@ class MoviesListFragment : Fragment() {
         }
 
         checkInternetConnectivity()
-
-        if (networkValue) {
-            viewModel.getMoviesFromNetwork()
-        } else {
-            viewModel.getMoviesFromDB()
-        }
         observe()
+        onRefresh()
         navigateToDetailsPage()
+    }
+
+    private fun onRefresh() {
+        binding.refresh.setOnRefreshListener{
+            checkInternetConnectivity()
+            binding.refresh.isRefreshing = false
+        }
+
     }
 
     private fun checkInternetConnectivity() {
         viewModel.isNetworkConnected.observe(viewLifecycleOwner) { isConnected ->
-            networkValue = when (isConnected) {
+            when (isConnected) {
                 false -> {
-                    false
+                    viewModel.getMoviesFromDB()
                 }
                 true -> {
-                    true
+                    viewModel.getMoviesFromNetwork()
                 }
             }
         }
@@ -100,15 +105,11 @@ class MoviesListFragment : Fragment() {
 
     private fun navigateToDetailsPage() {
         moviesListAdapter.onClickItemListener = {
-            if (networkValue) {
-                launchFragment(
-                    MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment2(
-                        it.id!!
-                    )
+            launchFragment(
+                MoviesListFragmentDirections.actionMoviesListFragmentToMovieDetailsFragment2(
+                    it.id!!
                 )
-            } else {
-                requireActivity().showShortToast("You don't have any saved movies. Connect to the internet and try again")
-            }
+            )
         }
     }
 
