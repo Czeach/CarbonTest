@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.czech.features.databinding.MoviesListFragmentBinding
 import com.czech.features.moviesList.adapter.MoviesListAdapter
 import com.czech.features.moviesList.adapter.MoviesListDiffCallback
@@ -23,8 +22,6 @@ class MoviesListFragment : Fragment() {
     private val viewModel by activityViewModels<MoviesListViewModel>()
 
     private val moviesListAdapter by lazy { MoviesListAdapter(MoviesListDiffCallback) }
-
-    private var networkValue = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
